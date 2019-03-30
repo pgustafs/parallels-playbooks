@@ -1,0 +1,19 @@
+- name: "[Play 1] Create new vm from template"
+  hosts: parallels_hypervisor
+  gather_facts: false
+  vars:
+    vm_name:
+    vm_cpu:
+    vm_memory:
+    vm_template:
+
+  tasks:
+  - include_role:
+      name: ansible-role-parallels-vm
+    vars:
+      parallels_vm_name: "{{ vm_name }}"
+      parallels_vm_memory: "{{ vm_memory }}"
+      parallels_vm_cpu_count: "{{ vm_cpu }}"
+      parallels_vm_state: running
+      parallels_vm_clone: True
+      parallels_vm_template: "{{ vm_template }}"
