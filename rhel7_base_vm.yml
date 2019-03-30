@@ -20,3 +20,17 @@
       parallels_vm_state: running
       parallels_vm_clone: True
       parallels_vm_template: "{{ vm_template }}"
+
+  - name: Setup in-memory inventory
+    add_host:
+      name: "{{ vm_name }}"
+      groups:
+        - just_created_vms
+
+- name: "[Play 2] Post Configuration of VM"
+  hosts: just_created_vms
+  vars:
+  tasks:
+
+  - name: test
+    command: ls
