@@ -1,7 +1,8 @@
 - name: "[Play 1] Create new vm from template"
-  hosts: parallels_hypervisor
+  hosts: localhost
   gather_facts: false
   vars:
+    parallels_hypervisor:
     vm_name:
     vm_cpu:
     vm_memory:
@@ -10,6 +11,8 @@
   tasks:
   - include_role:
       name: ansible-role-parallels-vm
+      apply:
+       delegate_to: "{{ parallels_hypervisor }}"
     vars:
       parallels_vm_name: "{{ vm_name }}"
       parallels_vm_memory: "{{ vm_memory }}"
