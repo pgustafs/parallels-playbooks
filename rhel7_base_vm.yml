@@ -29,6 +29,7 @@
 
 - name: "[Play 2] Post Configuration of VM"
   hosts: just_created_vms
+  becomme: true
   vars:
   tasks:
 

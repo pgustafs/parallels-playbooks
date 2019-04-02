@@ -1,4 +1,4 @@
-- name: "[Play 1] Create new vm from template"
+- name: "[Play 1] Delete vm"
   hosts: localhost
   gather_facts: false
   vars:
