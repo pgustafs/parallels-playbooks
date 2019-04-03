@@ -31,7 +31,24 @@
   hosts: just_created_vms
   become: true
   vars:
+
   tasks:
+  - name: Attach subscription
+    redhat_subscription:
+      state: present
+      username: "{{ rhsm_username }}"
+      password: "{{ rhsm_password }}"
+      pool_ids: "{{ rhsm_pool_id }}"
+
+  - name: Disable all RHSM repositories
+    rhsm_repository:
+      name: '*'
+      state: disabled
+
+  - name: Enable a RHSM repository
+    rhsm_repository:
+      name: "{{ item }}"
+    whit_items: "{{ rhsm_repos }}"
 
   - name: test
     command: ls
