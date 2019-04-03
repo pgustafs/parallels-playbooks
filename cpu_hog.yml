@@ -3,6 +3,11 @@
   become: true
   tasks:
 
+  - name: "Install psmisc package"
+    package:
+      name: psmisc
+      state: installed
+      
   - name: "Put some lode on the CPUs"
     shell: "(cd /; /usr/bin/yes > /dev/null 2>&1 &)"
     async: 10
