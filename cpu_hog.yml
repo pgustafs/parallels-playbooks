@@ -1,8 +1,10 @@
 - name: "[Play 1] Put some lode on the CPUs"
   hosts: all
-  become: true 
+  become: true
   tasks:
 
   - name: "Put some lode on the CPUs"
-    command: yes > /dev/null &
+    shell: "(cd /; yes > /dev/null 2>&1 &)"
+    async: 10
+    poll: 0
     with_sequence: start=1 end={{ansible_processor_vcpus|int}}
