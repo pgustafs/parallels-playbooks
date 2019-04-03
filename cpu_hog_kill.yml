@@ -1,0 +1,8 @@
+- name: "[Play 1] Remove the lode from the CPUs"
+  hosts: all
+  become: true
+  tasks:
+
+  - name: "Kill"
+    shell: "(/bin/killall yes)"
+  
