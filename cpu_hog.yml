@@ -4,7 +4,7 @@
   tasks:
 
   - name: "Put some lode on the CPUs"
-    shell: "(cd /; yes > /dev/null 2>&1 &)"
+    shell: "(cd /; /usr/bin/yes > /dev/null 2>&1 &)"
     async: 10
     poll: 0
     with_sequence: start=1 end={{ansible_processor_vcpus|int}}
